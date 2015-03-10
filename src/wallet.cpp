@@ -19,7 +19,7 @@
 using namespace std;
 extern unsigned int nStakeMaxAge;
 
-unsigned int nStakeSplitAge = 5 * 24 * 60 * 60;
+unsigned int nStakeSplitAge = 4 * 24 * 60 * 60;
 int64_t nStakeCombineThreshold = 500 * COIN;
 
 int64_t gcd(int64_t n,int64_t m) { return m == 0 ? n : gcd(m, n % m); } 
@@ -2614,7 +2614,7 @@ set< set<CTxDestination> > CWallet::GetAddressGroupings()
 
 // PayCon: check 'spent' consistency between wallet and txindex
 // PayCon: fix wallet spent state according to txindex
-void CWallet::FixSpentCoins(int& nMismatchFound, int64_t& nBalanceInQuestion, int& nOrphansFound, bool fCheckOnly)
+void CWallet::FixSpentCoins(int& nMismatchFound, int64& nBalanceInQuestion, int& nOrphansFound, bool fCheckOnly)
 {
     nMismatchFound = 0;
     nBalanceInQuestion = 0;
