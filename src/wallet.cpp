@@ -2614,7 +2614,7 @@ set< set<CTxDestination> > CWallet::GetAddressGroupings()
 
 // PayCon: check 'spent' consistency between wallet and txindex
 // PayCon: fix wallet spent state according to txindex
-void CWallet::FixSpentCoins(int& nMismatchFound, int64& nBalanceInQuestion, int& nOrphansFound, bool fCheckOnly)
+void CWallet::FixSpentCoins(int& nMismatchFound, int64_t& nBalanceInQuestion, int& nOrphansFound, bool fCheckOnly)
 {
     nMismatchFound = 0;
     nBalanceInQuestion = 0;
