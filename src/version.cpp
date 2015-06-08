@@ -1,5 +1,5 @@
-// Copyright (c) 2013 NovaCoin Developers
-// Copyright (c) 2014 The PayCon developers
+// Copyright (c) 2013-2015 NovaCoin Developers
+// Copyright (c) 2015 The PayCon developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include <string>
@@ -12,7 +12,7 @@
 const std::string CLIENT_NAME("PayCon");
 
 // Client version number
-#define CLIENT_VERSION_SUFFIX   ""
+#define CLIENT_VERSION_SUFFIX   "PayCon-1.0.5"
 
 
 // The following part of the code determines the CLIENT_BUILD variable.

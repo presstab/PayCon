@@ -1,5 +1,5 @@
-// Copyright (c) 2013 NovaCoin Developers
-// Copyright (c) 2014 The PayCon developers
+// Copyright (c) 2013-2015 NovaCoin Developers
+// Copyright (c) 2015 The PayCon developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -60,6 +60,7 @@ Value getpeerinfo(const Array& params, bool fHelp)
         obj.push_back(Pair("version", stats.nVersion));
         obj.push_back(Pair("subver", stats.strSubVer));
         obj.push_back(Pair("inbound", stats.fInbound));
+        obj.push_back(Pair("releasetime", (boost::int64_t)stats.nReleaseTime));
         obj.push_back(Pair("startingheight", stats.nStartingHeight));
         obj.push_back(Pair("banscore", stats.nMisbehavior));
 

@@ -1,5 +1,5 @@
-// Copyright (c) 2013 NovaCoin Developers
-// Copyright (c) 2014 The PayCon developers
+// Copyright (c) 2013-2015 NovaCoin Developers
+// Copyright (c) 2015 The PayCon developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_VERSION_H
@@ -31,10 +31,10 @@ static const int DATABASE_VERSION = 70608;
 // network protocol versioning
 //
 
-static const int PROTOCOL_VERSION = 70121;
+static const int PROTOCOL_VERSION = 70122;
 
 // earlier versions not supported as of Feb 2012, and are disconnected
-static const int MIN_PROTO_VERSION = 70120;
+static const int MIN_PROTO_VERSION = 70121;
 
 // nTime field added to CAddress, starting with this version;
 // if possible, avoid requesting addresses nodes older than this

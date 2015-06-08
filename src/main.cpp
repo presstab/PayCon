@@ -1,6 +1,6 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2014 The PayCon developers
+// Copyright (c) 2009-2015 Satoshi Nakamoto
+// Copyright (c) 2009-2015 The Bitcoin developers
+// Copyright (c) 2015 The PayCon developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -2725,7 +2725,7 @@ bool LoadBlockIndex(bool fAllowNew)
             return error("LoadBlockIndex() : failed to init sync checkpoint");
     }
 
-    string strPubKey = "VC8JZWPZHPxwX7TBF3xbxcBNwHfvzFLVHp";
+    string strPubKey = "";
 
     // if checkpoint master key changed must reset sync-checkpoint
     if (!txdb.ReadCheckpointPubKey(strPubKey) || strPubKey != CSyncCheckpoint::strMasterPubKey)
@@ -2887,6 +2887,9 @@ bool LoadExternalBlockFile(FILE* fileIn)
 extern map<uint256, CAlert> mapAlerts;
 extern CCriticalSection cs_mapAlerts;
 
+static string strMintMessage = "Info: Minting suspended due to locked wallet.";
+static string strMintWarning;
+
 string GetWarnings(string strFor)
 {
     int nPriority = 0;
@@ -2895,6 +2898,13 @@ string GetWarnings(string strFor)
 
     if (GetBoolArg("-testsafemode"))
         strRPC = "test";
+
+   // ppcoin: wallet lock warning for minting
+    if (strMintWarning != "")
+    {
+        nPriority = 0;
+        strStatusBar = strMintWarning;
+    }
 
     // Misc warnings like out of disk space and clock is wrong
     if (strMiscWarning != "")
@@ -3014,7 +3024,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
             return false;
         }
 
-        if (nTime > 1427068800 && pfrom->nVersion < 70121)
+        if (nTime > 1430124800 && pfrom->nVersion < 70122)
         {
             // Since February 20, 2012, the protocol is initiated at version 209,
             // and earlier versions are no longer supported
